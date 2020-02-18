@@ -26,6 +26,8 @@ get_detailed_report <- function(account_id, api_key,
 
   detailed_report <- httr::GET(url, httr::add_headers(Authorization = sprintf("Bearer %s", api_key)))
 
+  tmetricr::check_expected_type(response = detailed_report, type = "application/csv")
+
   detailed_report <- httr::content(detailed_report, type = "text/csv")
 
   return(detailed_report)

@@ -3,6 +3,12 @@ tmetric_api <- function(endpoint, query) {
   return(url)
 }
 
+check_expected_type <- function(response, type){
+  if (httr::http_type(response) != type) {
+    stop(paste0("API did not return", type), call. = FALSE)
+  }
+}
+
 report_params <- c(
   "reportParams.projectList",
   "reportParams.clientList",
