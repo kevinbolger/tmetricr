@@ -1,4 +1,7 @@
-base_url <- "https://app.tmetric.com/api"
+tmetric_api <- function(endpoint, query) {
+  url <- httr::modify_url("https://app.tmetric.com", path = endpoint, query = query)
+  return(url)
+}
 
 report_params <- c(
   "reportParams.projectList",

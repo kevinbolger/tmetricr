@@ -4,9 +4,9 @@ get_detailed_report <- function(account_id, api_key,
   # Want a list of extra query parameters provided by the user
   argg <- list(...)
 
-  detailed_report_endpoint <- "/reports/detailed/csv"
+  detailed_report_endpoint <- "api/reports/detailed/csv"
 
-  base_query <- paste0("?reportParams.accountId=", account_id,
+  base_query <- paste0("reportParams.accountId=", account_id,
                        "&reportParams.startDate=", start_date,
                        "&reportParams.endDate=", end_date)
 
@@ -20,7 +20,9 @@ get_detailed_report <- function(account_id, api_key,
                                  names(argg[1]), "=", argg[1])
   }
 
-  url <- paste0(tmetricr::base_url, detailed_report_endpoint, base_query, additional_queries)
+  query <- paste0(base_query, additional_queries)
+
+  url <- tmetricr::tmetric_api(detailed_report_endpoint, query)
 
   detailed_report <- httr::GET(url, httr::add_headers(Authorization = sprintf("Bearer %s", api_key)))
 
