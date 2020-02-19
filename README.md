@@ -8,7 +8,7 @@ This package aims to provide a wrapper for the `TMetric` `REST API` within `R` s
 
 Currently, `tmetricr` supports the following end points:
 
-- `reports/detailed/csv` (`GET` only)
+- `api/reports/detailed/csv` (`GET` only)
 
 More information on the different queries are available on the `TMetric` [Swagger UI homepage](https://app.tmetric.com/help/index)
 
